@@ -23,14 +23,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
+  @import '~styles/variables.styl'
   .header {
     display: flex;
     width: 100%;
     height: 0.88rem;
     color: #ffffff;
     line-height: .88rem;
-    background-color: #00bcd4;
+    background-color: $bgColor;
   }
   
   .header .header-left {

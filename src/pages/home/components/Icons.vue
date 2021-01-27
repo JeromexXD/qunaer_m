@@ -105,6 +105,7 @@ export default {
   width: 100%;
   height: 0;
   padding-bottom 50%;
+  margin: .1rem 0;
 }
 
 .icons-wrap .icon-box {

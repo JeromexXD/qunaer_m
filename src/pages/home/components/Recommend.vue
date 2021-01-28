@@ -7,7 +7,7 @@
     <ul class="list">
       <router-link tag="li"
                    class="list-item"
-                   v-for="item of list"
+                   v-for="item of recommendList"
                    :key="item.id"
                    to="/detail">
         <div class="item-img">
@@ -27,7 +27,7 @@
             </div>
             <div class="info-price">
               <span class="price">￥<em>{{ item.price }}</em></span>起
-              <span class="location">{{ item.location }}</span>
+              <span class="location">{{ item.district }}</span>
             </div>
           </div>
         </div>
@@ -39,37 +39,12 @@
 <script>
 export default {
   name: 'Recommend',
+  props: {
+    recommendList: Array
+  },
   data () {
     return {
-      list: [
-        {
-          id: '001',
-          imgUrl: 'https://imgs.qunarzz.com/p/p70/1809/e7/4941057a6aae702.jpg_256x160_9fee6ccb.jpg',
-          tag: '今日可定',
-          title: '丽江',
-          commentNum: 2944,
-          price: 1900,
-          location: '云南'
-        },
-        {
-          id: '002',
-          imgUrl: 'https://imgs.qunarzz.com/p/p64/1809/46/ddb72937ac938a02.jpg_256x160_5f99ddba.jpg',
-          tag: '今日可定',
-          title: '西安',
-          commentNum: 1034,
-          price: 998,
-          location: '陕西'
-        },
-        {
-          id: '003',
-          imgUrl: 'https://imgs.qunarzz.com/p/p67/1512/a2/0ebfcd965b9391f7.jpg_256x160_04d5813d.jpg',
-          tag: '今日可定',
-          title: '三亚',
-          commentNum: 3185,
-          price: 2988,
-          location: '海南'
-        }
-      ]
+
     }
   }
 }

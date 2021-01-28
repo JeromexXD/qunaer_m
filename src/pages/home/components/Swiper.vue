@@ -1,6 +1,7 @@
 <template>
   <div class="sw-wrap">
-    <swiper :options="swiperOption" ref="mySwiper">
+    <swiper :options="swiperOption"
+            v-if="swiperListLen">
     <!-- slides -->
     <swiper-slide v-for="item of swiperList" 
                   :key="item.id">
@@ -18,26 +19,21 @@
   // swiper options example:
   export default {
     name: 'HomeSwiper',
+    props: {
+      swiperList: Array
+    },
     data () {
       return {
         swiperOption: {
           pagination : '.swiper-pagination',
-          loop: true
-        },
-        swiperList:[
-          {
-            id: '001',
-            imgUrl: 'https://imgs.qunarzz.com/vs_ceph_vcimg/f03f5ac90ae59d0d9c6332a2bfd9782e.jpeg'
-          },
-          {
-            id: '002',
-            imgUrl: 'https://imgs.qunarzz.com/vs_ceph_vcimg/569cae4ae98e9793f7341e85eed73c54.jpeg'
-          },
-          {
-            id: '003',
-            imgUrl: 'https://imgs.qunarzz.com/vs_ceph_vcimg/f7813c9431796cc32ae7b7a78447342e.jpeg'
-          }
-        ]
+          loop: true,
+          autoplay: 5000
+        }
+      }
+    },
+    computed: {
+      swiperListLen () {
+        return this.swiperList.length;
       }
     }
   }

@@ -6,7 +6,7 @@
     <ul class="list">
       <router-link tag="li"
                    class="list-item"
-                   v-for="item of list"
+                   v-for="item of weekendList"
                    :key="item.id"
                    to="/detail">
         <div class="item-img">
@@ -28,28 +28,12 @@
 <script>
 export default {
   name: 'Weekend',
+  props: {
+    weekendList: Array
+  },
   data () {
     return {
-      list: [
-        {
-          id: '001',
-          imgUrl: 'https://img1.qunarzz.com/sight/p0/201305/31/5d45aefbe558d610c8d65eac.jpg_256x160_2c252ef1.jpg',
-          title: '山西晋祠博物馆',
-          comment: '古代祭祀建筑，碑刻等为一体的文化遗产'
-        },
-        {
-          id: '002',
-          imgUrl: 'https://img1.qunarzz.com/sight/p0/201311/28/109b7ea00f30016d8b9dc247519de19e.jpg_256x160_c8fdb127.jpg',
-          title: '五龙滑雪场',
-          comment: '在这里体验蓝蓝天空、皑皑白雪以及儿时激情'
-        },
-        {
-          id: '003',
-          imgUrl: 'https://img1.qunarzz.com/sight/p0/201408/01/9f8dfa93048e8c48d92abb80be419bdc.jpg_256x160_ab2538fb.jpg',
-          title: '云冈石窟',
-          comment: '石头写成的千年史卷'
-        }
-      ]
+
     }
   }
 }

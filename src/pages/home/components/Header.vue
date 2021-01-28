@@ -10,10 +10,12 @@
         搜索目的地
       </div>
     </div>
-    <div class="header-right">
+    <router-link to="/city">
+      <div class="header-right">
       城市
-      <span class="iconfont icon-xiala"></span>  
-    </div>
+        <span class="iconfont icon-xiala"></span>  
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -65,5 +67,6 @@ export default {
     width: 1.32rem;
     height: 100%;
     text-align: center;
+    color: #ffffff;
   }
 </style>

@@ -12,7 +12,7 @@
     </div>
     <router-link to="/city">
       <div class="header-right">
-      城市
+        {{ this.city }}
         <span class="iconfont icon-xiala"></span>  
       </div>
     </router-link>
@@ -20,8 +20,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  name: 'Header'
+  name: 'Header',
+  computed: mapState([
+    'city'
+  ])
 }
 </script>
 
@@ -64,7 +68,8 @@ export default {
   }
 
   .header .header-right {
-    width: 1.32rem;
+    min-width: .8rem;
+    padding: 0 .1rem;
     height: 100%;
     text-align: center;
     color: #ffffff;

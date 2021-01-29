@@ -21,6 +21,7 @@ import HomeWeekend from './components/Weekend'
 
 import BScroll from 'better-scroll'
 import axios from 'axios'
+import { mapState } from 'vuex'
 export default {
   name: 'Home',
   components: {
@@ -30,21 +31,27 @@ export default {
     'home-recommend': HomeRecommend,
     'home-weekend': HomeWeekend
   },
+  computed: {
+    ...mapState({
+      curCity: 'city'
+    })
+  },
   data () {
     return {
       iconsList: [],
       recommendList: [],
       swiperList: [],
-      weekendList: []
+      weekendList: [],
+      lastCity: ''
     }
   },
   methods: {
     getHomeData () {
-      axios.get('/api/index.json')
-      .then(this.getHomeDataSuccess)
-      .catch((err) => {
-        console.log(err);
-      })
+      axios.get('/api/index.json?city=' + this.curCity)
+        .then(this.getHomeDataSuccess)
+        .catch((err) => {
+          console.log(err);
+        })
     },
     getHomeDataSuccess (res) {
       var data = res.data.data;
@@ -55,10 +62,20 @@ export default {
     }
   },
   mounted () {
+    this.lastCity = this.curCity;
     this.getHomeData();
   },
   updated () {
     this.scroll = new BScroll(this.$refs.scrollWrap);
+  },
+  activated () {
+    if(this.curCity !== this.lastCity){
+      this.lastCity = this.curCity;
+      this.getHomeData();
+    }
+  },
+  deactivated () {
+    console.log('deactivated');
   }
 }
 </script>

@@ -8,7 +8,8 @@
         <ul class="clearfix">
           <li v-for="(item, index) of hCities" 
               :key="index"
-              :class="item.className">
+              :class="item.className"
+              @click="handleCityClick(item.name)">
             {{ item.name }}
           </li>
         </ul>
@@ -33,7 +34,8 @@
           </div>
           <ul class="clearfix">
             <li v-for="innerItem of item" 
-                :key="innerItem.id">
+                :key="innerItem.id"
+                @click="handleCityClick(innerItem.name)">
               {{ innerItem.name }}
             </li>
           </ul>
@@ -47,6 +49,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { mapMutations } from 'vuex'
 export default {
   name: 'List',
   props: {
@@ -86,8 +89,16 @@ export default {
     }
   },
   methods: {
+    ...mapMutations({
+      changeCity: 'changeCity'
+    }),
     handleLetterClick (e) {
       this.letter = e.target.innerText;
+    },
+    handleCityClick (city) {
+      // this.$store.commit('changeCity', city);
+      this.changeCity(city);
+      this.$router.push('/');
     }
   },
   mounted () {

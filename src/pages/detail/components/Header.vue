@@ -33,8 +33,9 @@ export default {
     handleScroll () {
       var top = document.documentElement.scrollTop;
       if(top > 50) {
-        this.opacityStyle.opacity = top / 100;
-        console.log(this.opacity);
+        var opacity = top / 100;
+        opacity = opacity > 1 ? 1 : opacity;
+        this.opacityStyle.opacity = opacity;
         this.showHeader = true;
       } else {
         this.showHeader = false;

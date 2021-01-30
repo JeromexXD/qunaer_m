@@ -64,8 +64,6 @@ export default {
   mounted () {
     this.lastCity = this.curCity;
     this.getHomeData();
-  },
-  updated () {
     this.scroll = new BScroll(this.$refs.scrollWrap);
   },
   activated () {
@@ -75,7 +73,7 @@ export default {
     }
   },
   deactivated () {
-    console.log('deactivated');
+    // console.log('deactivated');
   }
 }
 </script>

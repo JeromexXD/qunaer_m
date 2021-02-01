@@ -4,8 +4,11 @@
       <span class="iconfont icon-zuo-"></span>
     </div>
     <div class="header-middle">
-      <input type="text" class="header-input" />
-      <div class="header-kw">
+      <input type="text" class="header-input"
+             @focus="handleFocus"
+             @blur="handleBlur" />
+      <div class="header-kw"
+           v-show="!isFocus">
         <span class="iconfont icon-search"></span>
         搜索目的地
       </div>
@@ -25,7 +28,20 @@ export default {
   name: 'Header',
   computed: mapState([
     'city'
-  ])
+  ]),
+  data () {
+    return {
+      isFocus: false
+    }
+  },
+  methods: {
+    handleFocus () {
+      this.isFocus = true;
+    },
+    handleBlur () {
+      this.isFocus = false;
+    }
+  }
 }
 </script>
 
@@ -65,6 +81,7 @@ export default {
     width: 100%;
     height: 70%;
     border-radius: .1rem;
+    text-indent: .2rem;
   }
 
   .header .header-right {

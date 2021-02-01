@@ -13,14 +13,17 @@
                    class="header-back">
         <span class="iconfont icon-zuo-"></span>
       </router-link>
-      三亚（AAAAA景区）
+      {{ sightName }}
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Header',
+  name: 'DetailHeader',
+  props: {
+    sightName: String
+  },
   data () {
     return {
       showHeader: false,
@@ -81,6 +84,7 @@ export default {
   background-color: $bgColor;
   color: #ffffff;
   font-size: .32rem;
+  z-index: 3;
 }
 
 .detail-header .header-back {

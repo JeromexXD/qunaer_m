@@ -1,22 +1,22 @@
 <template>
   <div>
     <div class="banner"
-       @click="handleBannerClick">
-      <img class="banner-img" src="https://imgs.qunarzz.com/p/p67/1512/a2/0ebfcd965b9391f7.jpg_256x160_04d5813d.jpg" />
+         @click="handleBannerClick">
+      <img class="banner-img" :src="bannerImage" />
       <div class="banner-info">
         <div class="banner-num">
           <span class="iconfont icon-tukuxiangce"></span>
-          8
+          {{ galleryImages.length }}
         </div>
         <div class="banner-title">
-          三亚(AAAAA景区)
+          {{ sightName }}
         </div>
       </div>
     </div>
     <common-fade>
       <common-gallery v-show="isGalleryShow"
-                    :data="data"
-                    @closeGallery="handleGalleryClose">
+                      :data="galleryImages"
+                      @closeGallery="handleGalleryClose">
       </common-gallery>
     </common-fade>
   </div>
@@ -26,14 +26,15 @@
 import CommonGallery from 'common/gallery/Gallery'
 import CommonFade from 'common/fade/Fade'
 export default {
-  name: 'Banner',
+  name: 'DetailBanner',
+  props: {
+    sightName: String,
+    bannerImage: String,
+    galleryImages: Array
+  },
   data () {
     return {
-      isGalleryShow: false,
-      data: [
-        'https://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/7d9b233c71cad13ded0013f9c9cec635.jpg',
-        'https://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/5a11974656794b4715156501be10c1b7.jpg'
-      ]
+      isGalleryShow: false
     }
   },
   methods: {

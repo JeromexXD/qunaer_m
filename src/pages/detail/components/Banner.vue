@@ -13,15 +13,18 @@
         </div>
       </div>
     </div>
-    <common-gallery v-show="isGalleryShow"
+    <common-fade>
+      <common-gallery v-show="isGalleryShow"
                     :data="data"
                     @closeGallery="handleGalleryClose">
-    </common-gallery>
+      </common-gallery>
+    </common-fade>
   </div>
 </template>
 
 <script>
 import CommonGallery from 'common/gallery/Gallery'
+import CommonFade from 'common/fade/Fade'
 export default {
   name: 'Banner',
   data () {
@@ -42,7 +45,8 @@ export default {
     }
   },
   components: {
-    'common-gallery': CommonGallery
+    'common-gallery': CommonGallery,
+    'common-fade': CommonFade
   }
 }
 </script>
